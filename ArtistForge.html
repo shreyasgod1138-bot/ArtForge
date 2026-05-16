@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArtForge - Artist Platform</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#0f172a;
+    color:white;
+}
+
+nav{
+    background:#111827;
+    padding:18px;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:18px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(to right,#1e293b,#0f172a);
+}
+
+.hero h1{
+    font-size:70px;
+    color:#38bdf8;
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:24px;
+    width:70%;
+}
+
+.btn{
+    margin-top:30px;
+    padding:15px 35px;
+    border:none;
+    background:#38bdf8;
+    color:black;
+    font-size:18px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    background:white;
+}
+
+section{
+    padding:80px 10%;
+}
+
+.title{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:50px;
+    color:#38bdf8;
+}
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    gap:25px;
+    justify-content:center;
+}
+
+.card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    width:300px;
+    transition:0.4s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#38bdf8;
+}
+
+.gallery{
+    column-count:3;
+    column-gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    margin-bottom:20px;
+    border-radius:18px;
+    display:block;
+    break-inside:avoid;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+    transition:0.4s;
+    cursor:pointer;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+.gallery img{
+    width:100%;
+    border-radius:15px;
+    transition:0.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.04);
+}
+
+.upload-box{
+    background:#1e293b;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+}
+
+input, select{
+    padding:12px;
+    margin-top:10px;
+    width:100%;
+    border:none;
+    border-radius:8px;
+}
+
+.challenge{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.voice-box{
+    background:#1e293b;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+}
+
+footer{
+    background:#111827;
+    padding:25px;
+    text-align:center;
+}
+
+.profile{
+    background:#1e293b;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+}
+
+.profile img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:20px;
+}
+
+
+
+.cloud{
+    position:fixed;
+    width:180px;
+    opacity:0.18;
+    pointer-events:auto;
+    transition:transform 0.8s ease, opacity 0.8s ease;
+    z-index:1;
+}
+
+.cloud:hover{
+    transform:translateY(-80px) scale(1.1);
+    opacity:0.35;
+}
+
+.cloud1{
+    top:120px;
+    left:40px;
+}
+
+.cloud2{
+    top:300px;
+    right:50px;
+}
+
+.cloud3{
+    bottom:120px;
+    left:200px;
+}
+
+</style>
+</head>
+<body>
+
+<img class="cloud cloud1" src="https://cdn-icons-png.flaticon.com/512/414/414927.png" alt="cloud">
+
+<img class="cloud cloud2" src="https://cdn-icons-png.flaticon.com/512/414/414927.png" alt="cloud">
+
+<img class="cloud cloud3" src="https://cdn-icons-png.flaticon.com/512/414/414927.png" alt="cloud">
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#upload">Upload</a>
+    <a href="#challenge">Challenges</a>
+    <a href="#voice">Voice Bot</a>
+</nav>
+
+<section class="hero" id="home">
+    <h1>ArtForge</h1>
+    <p>
+        A platform where artists can upload artwork, showcase talent,
+        practice daily challenges and improve their drawing skills.
+    </p>
+
+    <button class="btn" onclick="speakMessage()">
+        Talk To Art Bot 🎤
+    </button>
+</section>
+
+<section id="features">
+    <h2 class="title">Platform Features</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Artist Accounts</h3>
+            <p>
+                Artists can create profiles, upload art and showcase work publicly.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Art Preferences</h3>
+            <p>
+                Select Anime, Realism, Portrait, Character Design and more.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Daily Challenges</h3>
+            <p>
+                Every day artists receive a new practice challenge.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Voice Assistant</h3>
+            <p>
+                Use voice commands like “Open Gallery” or “Show Challenges”.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="profile">
+    <h2 class="title">Artist Profile</h2>
+
+    <div class="profile">
+        <img id="profilePic" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+        <h2 id="artistName">Shreyas Artist</h2>
+
+        <br>
+
+        <input type="text" id="nameInput" placeholder="Enter Your Artist Name">
+
+        <button class="btn" onclick="changeArtistName()">
+            Save Artist Name
+        </button>
+
+        <p>
+            Pencil Artist • Anime Lover • Daily Sketch Practice
+        </p>
+
+        <br>
+
+        <h3 style="margin-bottom:15px; color:#38bdf8;">
+            Choose Your Drawing Preference
+        </h3>
+
+        <select id="drawingPreference" onchange="showPreferenceIdeas()">
+            <option value="all">Select Drawing Preference</option>
+            <option value="anime">Anime</option>
+            <option value="realism">Realism</option>
+            <option value="portrait">Portrait</option>
+            <option value="landscape">Landscape</option>
+            <option value="character">Character Design</option>
+        </select>
+
+        <br><br>
+
+        <h3 style="color:#38bdf8; margin-bottom:15px;">
+            Choose Your Profile Picture
+        </h3>
+
+        <div class="cards">
+
+            <img onclick="changeDP(this.src)" src="https://cdn-icons-png.flaticon.com/512/6997/6997662.png" style="width:90px;height:90px;border-radius:50%;cursor:pointer;border:3px solid #38bdf8;">
+
+            <img onclick="changeDP(this.src)" src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" style="width:90px;height:90px;border-radius:50%;cursor:pointer;border:3px solid #c084fc;">
+
+            <img onclick="changeDP(this.src)" src="https://cdn-icons-png.flaticon.com/512/4140/4140037.png" style="width:90px;height:90px;border-radius:50%;cursor:pointer;border:3px solid #fb923c;">
+
+            <img onclick="changeDP(this.src)" src="https://cdn-icons-png.flaticon.com/512/6997/6997665.png" style="width:90px;height:90px;border-radius:50%;cursor:pointer;border:3px solid #2dd4bf;">
+
+            <img onclick="changeDP(this.src)" src="https://cdn-icons-png.flaticon.com/512/6997/6997667.png" style="width:90px;height:90px;border-radius:50%;cursor:pointer;border:3px solid #f472b6;">
+
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <div id="ideaBox" class="card" style="width:100%; max-width:900px; margin:auto;">
+        <h3 style="font-size:30px;">🎨 Drawing Ideas</h3>
+        <p id="ideaText" style="margin-top:15px; line-height:1.8;">
+            Select a drawing preference to get personalized drawing ideas.
+        </p>
+    </div>
+</section>
+
+<section id="gallery">
+    <h2 class="title">Creative Drawing Ideas</h2>
+
+    <div class="gallery">
+
+        <img src="download (3).jpg" alt="Porsche GT3 Drawing">
+
+        <img src="download (2).jpg" alt="Spider Man Drawing">
+
+        <img src="Samurai Drawing.jpg" alt="Samurai Pencil Art">
+
+        <img src="download (1).jpg" alt="Dark Warrior Sketch">
+
+        <img src="download.jpg" alt="Anime Anatomy Drawing">
+
+    </div>
+</section>
+
+<section id="upload">
+    <h2 class="title">Upload Your Artwork</h2>
+
+    <div class="upload-box">
+
+        <h2>Upload Art</h2>
+
+        <br>
+
+        <input type="text" placeholder="Artwork Title">
+
+        <br><br>
+
+        <input type="file" id="fileInput">
+
+        <br><br>
+
+        <button class="btn" onclick="uploadMessage()">
+            Upload Artwork
+        </button>
+
+    </div>
+</section>
+
+<section id="challenge">
+    <h2 class="title">Daily Drawing Challenges</h2>
+
+    <div class="cards">
+
+        <div class="card" style="background:linear-gradient(135deg,#1e293b,#334155); border-left:5px solid #38bdf8;">
+            <h3>🎨 Monday</h3>
+            <p style="margin-top:10px;">
+                Hand Sketch Practice
+            </p>
+            <br>
+            <small style="color:#cbd5e1;">
+                Focus on fingers, gestures and hand anatomy.
+            </small>
+        </div>
+
+        <div class="card" style="background:linear-gradient(135deg,#1e293b,#3b0764); border-left:5px solid #c084fc;">
+            <h3>👁 Tuesday</h3>
+            <p style="margin-top:10px;">
+                Eyes & Expressions
+            </p>
+            <br>
+            <small style="color:#ddd6fe;">
+                Draw emotions, eye angles and anime expressions.
+            </small>
+        </div>
+
+        <div class="card" style="background:linear-gradient(135deg,#1e293b,#3f6212); border-left:5px solid #84cc16;">
+            <h3>🦴 Wednesday</h3>
+            <p style="margin-top:10px;">
+                Anatomy Training
+            </p>
+            <br>
+            <small style="color:#d9f99d;">
+                Study body proportions and muscle structure.
+            </small>
+        </div>
+
+        <div class="card" style="background:linear-gradient(135deg,#1e293b,#7c2d12); border-left:5px solid #fb923c;">
+            <h3>💇 Thursday</h3>
+            <p style="margin-top:10px;">
+                Hair & Clothing
+            </p>
+            <br>
+            <small style="color:#fed7aa;">
+                Practice fabric folds and dynamic hairstyles.
+            </small>
+        </div>
+
+        <div class="card" style="background:linear-gradient(135deg,#1e293b,#831843); border-left:5px solid #f472b6;">
+            <h3>🏙 Friday</h3>
+            <p style="margin-top:10px;">
+                Perspective Drawing
+            </p>
+            <br>
+            <small style="color:#fbcfe8;">
+                Create buildings, rooms and cinematic scenes.
+            </small>
+        </div>
+
+        <div class="card" style="background:linear-gradient(135deg,#1e293b,#0f766e); border-left:5px solid #2dd4bf;">
+            <h3>🔥 Saturday</h3>
+            <p style="margin-top:10px;">
+                Full Character Design
+            </p>
+            <br>
+            <small style="color:#99f6e4;">
+                Combine anatomy, outfit and personality.
+            </small>
+        </div>
+
+        <div class="card" style="background:linear-gradient(135deg,#1e293b,#312e81); border-left:5px solid #818cf8;">
+            <h3>✨ Sunday</h3>
+            <p style="margin-top:10px;">
+                Creative Free Challenge
+            </p>
+            <br>
+            <small style="color:#c7d2fe;">
+                Draw anything from your imagination.
+            </small>
+        </div>
+
+    </div>
+</section>
+
+<section id="voice">
+    <h2 class="title">ArtForge AI Voice Assistant</h2>
+
+    <div class="voice-box">
+
+        <h2 style="color:#38bdf8; font-size:38px;">
+            🎙 Nova Art Bot
+        </h2>
+
+        <br>
+
+        <p style="font-size:20px; color:#cbd5e1;">
+            Your personal voice bot is here to help you navigate through the artist platform easily.
+            It helps artists navigate the platform using voice.
+        </p>
+
+        <br><br>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🎨 Open Gallery</h3>
+                <p>
+                    Automatically scrolls to the art showcase section.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🔥 Show Challenges</h3>
+                <p>
+                    Opens the daily artist practice section.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🏠 Go Home</h3>
+                <p>
+                    Returns to the homepage instantly.
+                </p>
+            </div>
+
+        </div>
+
+        <br><br>
+
+        <button class="btn" onclick="startVoiceRecognition()">
+            Start AI Voice Assistant 🎤
+        </button>
+
+    </div>
+</section>
+
+<footer>
+    <h2>Made By Shreyas 🚀</h2>
+    <p>Future Artist Platform</p>
+</footer>
+
+<script>
+
+function uploadMessage(){
+
+    alert("🎉 Artwork Uploaded Successfully! Amazing work artist!");
+
+    let speech = new SpeechSynthesisUtterance(
+        "Congratulations Shreyas. Your artwork looks amazing. Keep creating masterpieces."
+    );
+
+    speech.lang = "en-US";
+
+    window.speechSynthesis.speak(speech);
+}
+
+function speakMessage(){
+
+    let speech = new SpeechSynthesisUtterance(
+        "You have came to correct place. Welcome to ArtForge. I am your voice assistant and I will help you navigate through the platform."
+    );
+
+    speech.lang = "en-US";
+
+    window.speechSynthesis.speak(speech);
+}
+
+function startVoiceRecognition(){
+
+    speakBot("Where do you want to navigate?");
+
+    const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if(!SpeechRecognition){
+        alert("Voice Recognition Not Supported In Your Browser");
+        return;
+    }
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.start();
+
+    recognition.onstart = function(){
+        console.log("Voice Bot Listening...");
+    }
+
+    recognition.onresult = function(event){
+
+        const command = event.results[0][0].transcript.toLowerCase();
+
+        if(command.includes("gallery") || command.includes("drawing")){
+
+            document.getElementById("gallery").scrollIntoView({
+                behavior:"smooth"
+            });
+
+            speakBot("Navigating to gallery");
+        }
+
+        else if(command.includes("challenge")){
+
+            document.getElementById("challenge").scrollIntoView({
+                behavior:"smooth"
+            });
+
+            speakBot("Navigating to daily challenges");
+        }
+
+        else if(command.includes("home")){
+
+            document.getElementById("home").scrollIntoView({
+                behavior:"smooth"
+            });
+
+            speakBot("Navigating to homepage");
+        }
+
+        else if(command.includes("upload")){
+
+            document.getElementById("upload").scrollIntoView({
+                behavior:"smooth"
+            });
+
+            speakBot("Navigating to upload section");
+        }
+
+        else if(command.includes("profile") || command.includes("artist")){
+
+            document.getElementById("profile").scrollIntoView({
+                behavior:"smooth"
+            });
+
+            speakBot("Navigating to artist profile");
+        }
+
+        else if(command.includes("voice") || command.includes("assistant")){
+
+            document.getElementById("voice").scrollIntoView({
+                behavior:"smooth"
+            });
+
+            speakBot("Navigating to voice assistant");
+        }
+
+        else{
+
+            speakBot("Sorry, I could not understand where you want to go");
+        }
+    }
+}
+
+function speakBot(message){
+
+    let speech = new SpeechSynthesisUtterance(message);
+
+    speech.lang = "en-US";
+
+    window.speechSynthesis.speak(speech);
+}
+
+function changeArtistName(){
+
+    const artistName = document.getElementById("nameInput").value;
+
+    if(artistName.trim() !== ""){
+
+        document.getElementById("artistName").innerText = artistName + " Artist";
+
+        speakBot("Artist name updated successfully");
+    }
+}
+
+function changeDP(imageSrc){
+
+    document.getElementById("profilePic").src = imageSrc;
+
+    speakBot("Profile picture updated successfully");
+}
+
+function showPreferenceIdeas(){
+
+    const preference = document.getElementById("drawingPreference").value;
+
+    const ideaText = document.getElementById("ideaText");
+
+    if(preference === "anime"){
+
+        ideaText.innerHTML = `
+        ✨ Anime Drawing Ideas:<br><br>
+        • Samurai Character<br>
+        • Anime Eyes Practice<br>
+        • Manga Panels<br>
+        • Naruto Style Character<br>
+        • Emotional Anime Scene
+        `;
+    }
+
+    else if(preference === "realism"){
+
+        ideaText.innerHTML = `
+        ✨ Realism Drawing Ideas:<br><br>
+        • Human Portrait<br>
+        • Detailed Hands<br>
+        • Realistic Car Sketch<br>
+        • Eye Shading Practice<br>
+        • Realistic Hair Texture
+        `;
+    }
+
+    else if(preference === "portrait"){
+
+        ideaText.innerHTML = `
+        ✨ Portrait Ideas:<br><br>
+        • Old Man Portrait<br>
+        • Side Face Drawing<br>
+        • Smiling Face Practice<br>
+        • Female Portrait<br>
+        • Cinematic Lighting Face
+        `;
+    }
+
+    else if(preference === "landscape"){
+
+        ideaText.innerHTML = `
+        ✨ Landscape Ideas:<br><br>
+        • Mountains and Clouds<br>
+        • Sunset Scene<br>
+        • Japanese Street
+        • Rainy City Sketch<br>
+        • Forest Path Drawing
+        `;
+    }
+
+    else if(preference === "character"){
+
+        ideaText.innerHTML = `
+        ✨ Character Design Ideas:<br><br>
+        • Dark Warrior<br>
+        • Cyberpunk Hero<br>
+        • Medieval Knight<br>
+        • Fantasy Girl Character<br>
+        • Assassin Concept Art
+        `;
+    }
+
+    else{
+
+        ideaText.innerHTML = `
+        Select a drawing preference to get personalized drawing ideas.
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>
